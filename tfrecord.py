@@ -2,7 +2,7 @@
 import tensorflow as tf
 import numpy as np
 import cv2
-tf.contrib.eager.enable_eager_execution()
+
 
 def _bytes_feature(value):
     """Returns a bytes_list from a string / byte."""
@@ -31,6 +31,7 @@ def _parse_function(example_proto):
     return tf.io.parse_single_example(example_proto, feature_description)
 
 if __name__ == '__main__':
+    tf.contrib.eager.enable_eager_execution()
     filename = 'test.tfrecord'
     writer=tf.io.TFRecordWriter(filename)
     image = np.zeros((512,512,3), dtype=np.uint8)
